@@ -19,6 +19,7 @@
                                 <th class="px-6 py-3 bg-gray-50 text-left">
                                     <span class="text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</span>
                                 </th>
+                                <th></th>
                             </tr>
                             </thead>
 
@@ -30,6 +31,16 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                         {{ $user->email }}
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('users.destroy', $user) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="hidden" name="page" value="{{ $users->currentPage() }}">
+                                            <button type="submit" class="hover:text-red-600">
+                                                <x-heroicon-o-trash class="w-6 h-6" />
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

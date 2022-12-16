@@ -18,6 +18,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::delete('users/{user}/delete', [\App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
